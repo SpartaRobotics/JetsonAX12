@@ -46,6 +46,10 @@ int main()
     for(int i = 0; i < 3; i ++)
     {
         cout << "POSITION: " << control.readPosition(ID) << endl;
+        cout << "TEMPERATURE: " << control.readTemperature(ID) << endl;
+        cout << "VOLTAGE: " << control.readVoltage(ID) << endl;
+        cout << "SPEED: " << control.readSpeed(ID) << endl;
+        cout << "LOAD: " << control.readLoad(ID) << endl << endl;
         usleep(2*SEC);
     }
     

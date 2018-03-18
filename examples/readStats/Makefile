@@ -10,7 +10,7 @@ ODIR = ../../src/obj
 LMX28 = JetsonAX12
 LGPIO = jetsonGPIO
 
-TARGET = readPosition
+TARGET = readStats
 
 all: $(TARGET)
 
