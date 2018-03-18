@@ -155,7 +155,7 @@ private:
 
     struct termios options;
     
-	jetsonGPIO data; // directional pin
+	jetsonGPIO data;
 	unsigned char tx_buffer[14];
 	unsigned char rx_buffer[8];
     
@@ -170,7 +170,7 @@ private:
 	unsigned char Load_High_Byte;
 	unsigned char Load_Low_Byte;
 	
-	int uart0_filestream; // needed to initialize uart
+	int uart0_filestream;
 	int gpio_status;
 	int count;
 	int Read_Byte;
@@ -182,8 +182,6 @@ private:
 	int Temperature_Byte;
 	int Voltage_Byte;
 	int Error_Byte; 
-	  
-	//int read_error(void);
 
 public:
     void begin(const char *stream, speed_t baud, jetsonGPIO dataPin);

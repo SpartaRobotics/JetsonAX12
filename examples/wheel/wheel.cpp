@@ -50,7 +50,7 @@ int main()
     {
 		control.turn(ID, RIGHT, 1020);
 		usleep(3*SEC);
-		control.turn(ID, LEFT, 900);
+		control.turn(ID, LEFT, 512);
 		usleep(3*SEC);
 		control.turn(ID, OFF, OFF); // Either clockwise or counter clockwise as long as speed is 0
 		usleep(3*SEC);
