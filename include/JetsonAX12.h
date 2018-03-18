@@ -134,6 +134,7 @@ ORGANIZATION: Sparta Robotics
 #define Tx_MODE                     1
 #define Rx_MODE                     0
 #define LOCK                        1
+#define CENTER						150
 
 #define TRANSMIT_ON(STATUS) if ((STATUS)) gpioSetValue(data, on)
 #define TRANSMIT_OFF(STATUS) if ((STATUS)) gpioSetValue(data,off)
@@ -197,6 +198,8 @@ public:
     
     int move(unsigned char ID, int Position);
 	int moveSpeed(unsigned char ID, int Position, int Speed);
+	int moveDeg(unsigned char ID, int Degrees);
+	int moveSpeedDeg(unsigned char ID, int Degrees, int Speed);
 	int setEndless(unsigned char ID,bool Status);
 	int turn(unsigned char ID, bool SIDE, int Speed);
 	int moveRW(unsigned char ID, int Position);

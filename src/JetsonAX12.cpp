@@ -279,6 +279,30 @@ int JetsonAX12::moveSpeed(unsigned char ID, int Position, int Speed)
     return 0;
 }
 
+int JetsonAX12::moveDeg(unsigned char ID, int Degrees)
+{
+	int Position;
+	
+	Degrees += (CENTER);
+	Position = ( float(Degrees) / 300) * 1023;
+	
+	move(ID, Position);
+	
+	return 0;
+}
+
+int JetsonAX12::moveSpeedDeg(unsigned char ID, int Degrees, int Speed)
+{
+	int Position;
+	
+	Degrees += CENTER;
+	Position = ( float(Degrees) / 300) * 1023;
+	
+	moveSpeed(ID, Position, Speed);
+	
+	return 0;
+}
+
 int JetsonAX12::setEndless(unsigned char ID,bool Status)
 {
 
