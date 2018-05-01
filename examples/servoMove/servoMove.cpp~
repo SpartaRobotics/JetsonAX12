@@ -1,5 +1,5 @@
 /*
-    Example for moving at variable speeds on the Dynamixel AX12-A series servos
+    Example for moving the Dynamixel AX12-A series servos
     
 	Serial:
 	GPIO UART: "/dev/ttyTHS0" "/dev/ttyTHS1" "/dev/ttyTHS2"
@@ -15,15 +15,15 @@
 	gpio165 or 165,    // J3A2 - Pin 55
 	gpio166 or 166     // J3A2 - Pin 58
 	
-	*Moves the servo to a selected position at the desired speed
-		Ax12.moveSpeed(ID, 0->1023, 0->1023): 0->300 degrees
+	*Moves the servo to the selected position at max speed
+		Ax12.move(ID, 0->1023): 0->300 degrees
 */
 
 #include<iostream>
 #include "JetsonAX12.h"
 
 #define ID 1        // ID for singl servo
-#define USB 1   	// 1 for GPIO, 0 for USB
+#define USB 1   	// 0 for GPIO, 1 for USB
 #define SEC 1000000 // 1 Second in micro second units for delay
 #define MSEC 1000	// 1 milli second in micro second units for delay
 
@@ -38,28 +38,35 @@ int main()
 #else 
 	control.begin("/dev/ttyTHS0", B1000000, 166);
 #endif
-    
-    control.setEndless(ID, OFF);
-    
-    for(int i = 0; i < 3; i++)
-    {
-		control.moveSpeed(ID, 0, 1023);
-		usleep(2*SEC);
-		control.moveSpeed(ID, 256, 100);
-		usleep(2*SEC);
-		control.moveSpeed(ID, 512, 300);
-		usleep(2*SEC);
-		control.moveSpeed(ID, 768, 256);
-		usleep(2*SEC);
-		control.moveSpeed(ID, 1023, 768);
-		usleep(2*SEC);
-		control.moveSpeed(ID, 768, 256);
-		usleep(2*SEC);
-		control.moveSpeed(ID, 512, 50);
-		usleep(2*SEC);
-		control.moveSpeed(ID, 256, 512);
-		usleep(2*SEC);
 
+	control.setEndless(ID, OFF); // Sets the servo to "Servo" mode
+    
+    for(int i = 0; i < 3; i ++)
+    {
+        control.move(ID,0);
+        usleep(2*SEC);
+        
+        control.move(ID,256);
+        usleep(2*SEC);
+        
+        control.move(ID,512);
+        usleep(2*SEC);
+        
+        control.move(ID,768);
+        usleep(2*SEC);
+        
+        control.move(ID,1023);
+        usleep(2*SEC);
+        
+        control.move(ID,768);
+        usleep(2*SEC);
+        
+        control.move(ID,512);
+        usleep(2*SEC);
+        
+        control.move(ID,256);
+        usleep(2*SEC);
+        
     }
     
     control.disconnect();

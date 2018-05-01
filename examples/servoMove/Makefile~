@@ -2,27 +2,25 @@
 
 CC = g++
 CFLAGS = -g -Wall -I../../include
-LIBS= -lrt
-CPPLIBS= -L/usr/lib -lopencv_core -lopencv_flann -lopencv_video
 
 HDIR = ../../include
 SDIR = ../../src
 ODIR = ../../src/obj
 
-LAX28 = JetsonAX12
+LMX28 = JetsonAX12
 LGPIO = jetsonGPIO
 
 TARGET = servoMove
 
 all: $(TARGET)
 
-$(TARGET): $(TARGET).o $(LAX28).o $(LGPIO).o
-	$(CC) $(CFLAGS) $< $(ODIR)/$(LAX28).o $(ODIR)/$(LGPIO).o -o $@
+$(TARGET): $(TARGET).o $(LMX28).o $(LGPIO).o
+	$(CC) $(CFLAGS) $< $(ODIR)/$(LMX28).o $(ODIR)/$(LGPIO).o -o $@
 		
 $(TARGET).o: $(TARGET).cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 	
-$(LAX28).o: $(SDIR)/$(LAX28).cpp $(HDIR)/$(LAX28).h $(HDIR)/$(LGPIO).h
+$(LMX28).o: $(SDIR)/$(LMX28).cpp $(HDIR)/$(LMX28).h $(HDIR)/$(LGPIO).h
 	$(CC) $(CFLAGS) -c $< -o $(ODIR)/$@
 
 $(LGPIO).o: $(SDIR)/$(LGPIO).c	$(HDIR)/$(LGPIO).h
@@ -31,8 +29,8 @@ $(LGPIO).o: $(SDIR)/$(LGPIO).c	$(HDIR)/$(LGPIO).h
 
 target: $(TARGET)
 
-$(TARGET): $(TARGET).o $(LAX28).o $(LGPIO).o
-	$(CC) $(CFLAGS) $< $(ODIR)/$(LAX28).o $(ODIR)/$(LGPIO).o -o $@
+$(TARGET): $(TARGET).o $(LMX28).o $(LGPIO).o
+	$(CC) $(CFLAGS) $< $(ODIR)/$(LMX28).o $(ODIR)/$(LGPIO).o -o $@
 
 clean:
 	$(RM) -f core *.o $(TARGET)

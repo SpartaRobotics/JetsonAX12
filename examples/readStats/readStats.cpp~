@@ -38,13 +38,14 @@ int main()
     JetsonAX12 control;
 
 #if USB
-	control.begin("/dev/ttyUSB0", B1000000);
+	control.begin("/dev/ttyUSB0", B57600);
 #else 
-	control.begin("/dev/ttyTHS0", B1000000, 166);
+	control.begin("/dev/ttyTHS0", B57600, 166);
 #endif
 
 	control.setEndless(ID, OFF); // Sets the servo to "Servo" mode
     
+	//setBD(1,57600);
 
     control.move(ID, 512);
     

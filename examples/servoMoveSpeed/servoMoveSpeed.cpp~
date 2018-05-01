@@ -16,7 +16,7 @@
 	gpio166 or 166     // J3A2 - Pin 58
 	
 	*Moves the servo to a selected position at the desired speed
-		Ax12.moveSpeed(ID, 0->1023, 0->1023): 0->300 degrees
+		Ax12.moveSpeed(ID, 0->1023, 0->1023): 0->360 degrees
 */
 
 #include<iostream>

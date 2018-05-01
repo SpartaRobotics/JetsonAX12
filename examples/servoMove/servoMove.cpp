@@ -16,14 +16,14 @@
 	gpio166 or 166     // J3A2 - Pin 58
 	
 	*Moves the servo to the selected position at max speed
-		Ax12.move(ID, 0->1023): 0->360 degrees
+		Ax12.move(ID, 0->1023): 0->300 degrees
 */
 
 #include<iostream>
 #include "JetsonAX12.h"
 
 #define ID 1        // ID for singl servo
-#define USB 1   	// 1 for GPIO, 0 for USB
+#define USB 0   	// 0 for GPIO, 1 for USB
 #define SEC 1000000 // 1 Second in micro second units for delay
 #define MSEC 1000	// 1 milli second in micro second units for delay
 
@@ -38,10 +38,10 @@ int main()
 #else 
 	control.begin("/dev/ttyTHS0", B1000000, 166);
 #endif
-
+	//control.setBD(1, 1000000);
 	control.setEndless(ID, OFF); // Sets the servo to "Servo" mode
     
-    for(int i = 0; i < 3; i ++)
+    for(int i = 0; i < 1; i ++)
     {
         control.move(ID,0);
         usleep(2*SEC);
